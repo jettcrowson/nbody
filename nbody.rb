@@ -1,4 +1,7 @@
 require "gosu"
+require "./body"
+require "./reader"
+
 require_relative "z_order"
 
 class NbodySimulation < Gosu::Window
