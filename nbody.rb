@@ -1,5 +1,4 @@
 require "gosu"
-require "./body"
 require "./reader"
 
 require_relative "z_order"
@@ -10,6 +9,7 @@ class NbodySimulation < Gosu::Window
     super(640, 640, false)
     self.caption = "NBody simulation"
     @background_image = Gosu::Image.new("images/space.jpg", tileable: true)
+    @simulation = Reader.read_simulation("soap-opera.txt")
   end
 
   def update
@@ -17,6 +17,7 @@ class NbodySimulation < Gosu::Window
 
   def draw
     @background_image.draw(0, 0, ZOrder::Background)
+    @simulation.draw
   end
 
   def button_down(id)

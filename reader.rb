@@ -14,7 +14,11 @@ module Reader
                     when 1
                         radius = line
                     else
-                        body_properties = line.split(" ")
+                        body_properties = line.gsub(/\s+/m, ' ').strip.split(" ")
+
+                        if body_properties[0] == nil then next end
+                        if body_properties[0] == "Creator" then break end
+
                         bodies.push(Body.new(body_properties[0], body_properties[1], body_properties[2], body_properties[3], body_properties[4], body_properties[5]))
                 end
             end
