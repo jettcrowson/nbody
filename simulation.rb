@@ -11,7 +11,9 @@ class Simulation
         @bodies = bodies
         @g = 6.67408 * (10 ** -11)
 
-        puts calculate_body_force(bodies[0])
+        puts "Force: #{calculate_body_force(bodies[0])}"
+        bodies[0].set_force(calculate_body_force(bodies[0]))
+        puts "Acc: #{calculate_body_acceleration(bodies[0])}"
     end
 
     def convert_coords(x, y, img)
@@ -44,6 +46,13 @@ class Simulation
         fy = force * (dy / r)
 
         return [fx, fy]
+    end
+
+    def calculate_body_acceleration(body)
+        ax = body.force[0] / body.mass
+        ay = body.force[1] / body.mass
+
+        return [ax, ay]
     end
 
 end
