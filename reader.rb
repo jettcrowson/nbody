@@ -4,10 +4,16 @@ require "./simulation"
 module Reader
 
     def Reader.read_simulation(filename)
+
         number_of_bodies, radius, bodies = 0, 0, []
 
+        #Open the simulation file
         File.open("./simulations/#{filename}") do |f|
+
+            #Read the file line by line
             f.each_line.with_index do |line, i|
+
+                #Since we only need special action on the first and second lines we can specify that and use the else property to read n number or bodies
                 case i
                     when 0
                         number_of_bodies = line
