@@ -13,6 +13,7 @@ class NbodySimulation < Gosu::Window
   end
 
   def update
+    @simulation.update
   end
 
   def draw

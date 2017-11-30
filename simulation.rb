@@ -9,16 +9,17 @@ class Simulation
         @number_of_bodies = number_of_bodies.to_i
         @radius = radius.to_f
         @bodies = bodies
-
-        bodies[0].calc_force(bodies)
-        puts "Force: #{bodies[0].force}"
-        # bodies[0].set_force(calculate_body_force(bodies[0]))
-        # puts "Acc: #{calculate_body_acceleration(bodies[0])}"
     end
 
     def convert_coords(x, y, img)
         return [((320 * x) / radius) + 320 - (img.width / 2),
                 ((320 * y) / radius) + 320 - (img.height / 2)]
+    end
+
+    def update
+        bodies.each do |body|
+            body.set_coords(bodies)
+        end
     end
 
     def draw
