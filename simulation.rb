@@ -28,7 +28,8 @@ class Simulation
     end
 
     def calculate_body_force(body1)
-        force = 0
+        force, fx, fy, dx, dy, r = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+
         bodies.each do |body2|
             next if body2 == body1
             m1 = body1.mass
@@ -38,7 +39,11 @@ class Simulation
             r = Math.sqrt(dx ** 2 + dy ** 2)
             force += (g * m1 * m2) / (r ** 2)
         end
-        return force
+        
+        fx = force * (dx / r)
+        fy = force * (dy / r)
+
+        return [fx, fy]
     end
 
 end
