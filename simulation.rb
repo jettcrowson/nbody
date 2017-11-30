@@ -3,17 +3,17 @@ require_relative "z_order"
 
 class Simulation
 
-    attr_reader :number_of_bodies, :radius, :bodies, :g
+    attr_reader :number_of_bodies, :radius, :bodies
 
     def initialize(number_of_bodies, radius, bodies)
         @number_of_bodies = number_of_bodies.to_i
         @radius = radius.to_f
         @bodies = bodies
-        @g = 6.67408 * (10 ** -11)
 
-        puts "Force: #{calculate_body_force(bodies[0])}"
-        bodies[0].set_force(calculate_body_force(bodies[0]))
-        puts "Acc: #{calculate_body_acceleration(bodies[0])}"
+        bodies[0].calc_force(bodies)
+        puts "Force: #{bodies[0].force}"
+        # bodies[0].set_force(calculate_body_force(bodies[0]))
+        # puts "Acc: #{calculate_body_acceleration(bodies[0])}"
     end
 
     def convert_coords(x, y, img)
@@ -29,30 +29,5 @@ class Simulation
         end
     end
 
-    def calculate_body_force(body1)
-        force, fx, fy, dx, dy, r = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
-
-        bodies.each do |body2|
-            next if body2 == body1
-            m1 = body1.mass
-            m2 = body2.mass
-            dx = (body1.x - body2.x).abs
-            dy = (body1.y - body2.y).abs
-            r = Math.sqrt(dx ** 2 + dy ** 2)
-            force += (g * m1 * m2) / (r ** 2)
-        end
-        
-        fx = force * (dx / r)
-        fy = force * (dy / r)
-
-        return [fx, fy]
-    end
-
-    def calculate_body_acceleration(body)
-        ax = body.force[0] / body.mass
-        ay = body.force[1] / body.mass
-
-        return [ax, ay]
-    end
 
 end
