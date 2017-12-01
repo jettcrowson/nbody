@@ -9,6 +9,8 @@ class Simulation
         @number_of_bodies = number_of_bodies.to_i
         @radius = radius.to_f
         @bodies = bodies
+
+        bodies[0].calc_force(bodies)
     end
 
     def convert_coords(x, y, img)
