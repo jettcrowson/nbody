@@ -9,7 +9,7 @@ class NbodySimulation < Gosu::Window
     super(640, 640, false)
     self.caption = "NBody simulation"
     @background_image = Gosu::Image.new("images/space.jpg", tileable: true)
-    @simulation = Reader.read_simulation("kaleidoscope.txt")
+    @simulation = Reader.read_simulation("hypnosis.txt")
   end
 
   def update

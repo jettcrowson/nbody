@@ -28,11 +28,13 @@ class Body
             dx = Calc.how_far(self, body2)[0]
             dy = Calc.how_far(self, body2)[1]
 
-            f += Calc.force(mass, body2.mass, r)
-        end
+            f = Calc.force(mass, body2.mass, r)
 
-        fx = Calc.force_directional(f, dx, r)
-        fy = Calc.force_directional(f, dy, r)
+            fx += Calc.force_directional(f, dx, r)
+            fy += Calc.force_directional(f, dy, r)
+
+            f = 0.0
+        end
 
         return [fx, fy]
     end

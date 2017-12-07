@@ -3,7 +3,6 @@ module Calc
     def Calc.how_far(b1,b2)
         dx = (b2.x - b1.x)
         dy = (b2.y - b1.y)
-
         return [dx, dy]
     end
 
@@ -27,11 +26,11 @@ module Calc
     end
 
     def Calc.velocity(a, v0)
-        return (a * 25000) + v0
+        return (a * 250000) + v0
     end
 
     def Calc.distance(v0, v)
-        return v0 + (v * 25000)
+        return v0 + (v * 250000)
     end
 
 end
