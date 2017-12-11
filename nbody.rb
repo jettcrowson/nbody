@@ -8,8 +8,9 @@ class NbodySimulation < Gosu::Window
   def initialize
     super(640, 640, false)
     self.caption = "NBody simulation"
+    planet = ARGV
     @background_image = Gosu::Image.new("images/space.jpg", tileable: true)
-    @simulation = Reader.read_simulation("hypnosis.txt")
+    @simulation = Reader.read_simulation("#{planet[0]}.txt")
   end
 
   def update
