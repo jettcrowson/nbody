@@ -9,8 +9,6 @@ class Simulation
         @number_of_bodies = number_of_bodies.to_i
         @radius = radius.to_f
         @bodies = bodies
-
-        bodies[0].calc_force(bodies)
     end
 
     def convert_coords(x, y, img)
@@ -27,7 +25,7 @@ class Simulation
     def draw
         bodies.each do |body|
             body_image = Gosu::Image.new("images/#{body.pic}")
-            coords = convert_coords(body.x, body.y, body_image)
+            coords = convert_coords(body.x, -body.y, body_image)
             body_image.draw(coords[0], coords[1], ZOrder::Body)
         end
     end
