@@ -1,0 +1,53 @@
+Which classes will need to be changed?
+Body class 
+Radius and z_velocity are both properties of each individual body
+Simulation class
+Need to check for collisions and if there is split the bodies
+
+Which will not?
+Nbody
+Should still draw them fine
+
+Changes
+Body
+Initialize
+Create the Z-velocity, z position, and the radius variables (radius variable is grabbed from the image radius and then converted into space units)
+Draw
+Draw the bodies according to their radius’ due to the z coords scaling
+Calculate_force
+Account for the Z direction
+Calculate_accelaration
+Account for the z direction forces
+Calculate_velocity
+Account for the z direction forces
+Calculate_position
+Account for the z direction
+
+Simulation
+Update
+Call a function to check for collisions each time
+Draw
+Only draw bodies if they are within the universe’s radius in the z direction
+
+New Methods
+Body
+No new methods are needed because the physics change to accommodate a new direction, but no new physics are added.
+
+Simulation
+Check_collisions (needed for bodies colliding and breaking)
+Don’t have this yet so need to make it
+Loop through the bodies and see if any are touching each other
+If they are, break both the bodies
+Break_body (needed once bodies collide and break)
+Called if two bodies collide
+Removes the body from the list and replaces it with two new ones, each half the size heading in random directions
+
+Research
+All of the physics in the z direction need to be researched. All of the methods in the body currently only account for the x and y directions, so will need to be modified to accommodate the 3rd dimension. I could find this information with a quick google search on space physics calculations of real life bodies, then adapt them into my code.
+
+Testing
+To test the code the only changes that need to be made are possibly printing out values for the bodies to make sure they are moving on all 3 axis’ and that the collisions are working.
+
+Problems
+The most significant problems will be getting the physics of the z direction to work properly. My plan helps avoid them by carefully researching real world equations, implementing them, and then printing out values to make sure that the code is working. 
+
